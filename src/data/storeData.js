@@ -176,7 +176,7 @@ export const DIWALI_COLLECTION = [
     letter: "S",
     bg: "bg-[#FAF4DE]",
     textColor: "text-[#7D6D34]",
-    tag: "GIFT READY",
+    tag: "DIWALI COLLECTION",
     discount: "56% off",
     title: "Sandalwood Scented Jar Candle Duo",
     rating: 4.5,

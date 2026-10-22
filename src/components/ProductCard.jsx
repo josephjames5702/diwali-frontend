@@ -12,7 +12,7 @@ export default function ProductCard({ item, onAddToCart, compact = false, varian
           )}
           {item.tag && (
             <span className={`absolute bottom-2.5 left-2.5 rounded-[4px] px-2 py-0.5 text-[9px] font-black uppercase tracking-wider ${
-              item.tag === 'DIWALI EXCLUSIVE' || item.tag === 'GIFT READY'
+              item.tag === 'DIWALI EXCLUSIVE' || item.tag === 'DIWALI COLLECTION'
                 ? 'bg-[#0B2240] text-[#FFC94A]'
                 : 'bg-white text-black border border-black'
             }`}>

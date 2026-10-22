@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 export default function HeroSection() {
-  const bulbCount = 26;
+  const bulbCount = 20;
   const [timeRemaining, setTimeRemaining] = useState(() => getTimeRemaining());
 
   useEffect(() => {
@@ -14,17 +14,22 @@ export default function HeroSection() {
 
   return (
     <section className="relative overflow-hidden bg-[radial-gradient(120%_90%_at_50%_0%,#14335C_0%,#0B2240_60%)] px-4 text-white">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-10">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-14">
         <svg
-          className="absolute inset-0 h-7 w-full"
-          viewBox="0 0 1000 28"
+          className="absolute inset-0 h-14 w-full"
+          viewBox="0 0 1000 56"
           preserveAspectRatio="none"
         >
-          <path d="M0 1 Q500 27 1000 1" fill="none" stroke="rgba(253, 230, 138, 0.25)" />
+          <path
+            d="M0 1 Q500 89 1000 1"
+            fill="none"
+            stroke="rgba(255, 201, 74, 0.45)"
+            strokeWidth="1.5"
+          />
         </svg>
         {Array.from({ length: bulbCount }, (_, index) => {
           const position = (index + 0.5) / bulbCount;
-          const wireY = 1 + 26 * (1 - (2 * position - 1) ** 2);
+          const wireY = 1 + 44 * (1 - (2 * position - 1) ** 2);
 
           return (
             <span
@@ -32,13 +37,16 @@ export default function HeroSection() {
               className="absolute flex -translate-x-1/2 flex-col items-center"
               style={{ left: `${position * 100}%`, top: `${wireY}px` }}
             >
-              <span className="h-1.5 w-[1px] bg-amber-100/40" />
-              <span className="h-1.5 w-1.5 rounded-full bg-[#FFD23F] shadow-[0_0_8px_#FFC94A]" />
+              <span className="h-1 w-px bg-amber-100/50" />
+              <span
+                className="string-lights-bulb h-2 w-[7px] rounded-full"
+                style={{ animationDelay: `${(index % 6) * 0.2}s` }}
+              />
             </span>
           );
         })}
       </div>
-      <div className="relative z-10 mx-auto max-w-[900px] pt-[56px] pb-[34px] text-center">
+      <div className="relative z-10 mx-auto max-w-[900px] pt-[68px] pb-[34px] text-center">
         <h3 className="mb-2 font-['Yatra_One',cursive] text-xl tracking-wide text-[#FFC94A] sm:text-[24px]">
           Shubh Deepavali
         </h3>

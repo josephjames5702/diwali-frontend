@@ -31,7 +31,13 @@ export default function ProductCarousel({ id, title, products, onAddToCart }) {
   const scrollByPage = (direction) => {
     const track = trackRef.current;
     if (!track) return;
-    track.scrollBy({ left: direction * track.clientWidth, behavior: 'smooth' });
+    const firstCard = track.firstElementChild;
+    if (!firstCard) return;
+
+    const trackStyles = window.getComputedStyle(track);
+    const gap = Number.parseFloat(trackStyles.columnGap) || 0;
+    const step = firstCard.getBoundingClientRect().width + gap;
+    track.scrollBy({ left: direction * step, behavior: 'smooth' });
   };
 
   const controlClass = (enabled) =>
@@ -76,17 +82,17 @@ export default function ProductCarousel({ id, title, products, onAddToCart }) {
       <div
         ref={trackRef}
         onScroll={updateControls}
-        className="scrollbar-none flex snap-x snap-mandatory gap-[14px] overflow-x-auto min-[768px]:gap-[18px]"
+        className="scrollbar-none flex snap-x snap-mandatory scroll-smooth gap-[14px] overflow-x-auto pe-8 min-[760px]:gap-[18px] sm:pe-12"
       >
         {products.map((item) => (
           <div
             key={item.id}
-            className="w-[calc(50%_-_7px)] shrink-0 snap-start min-[768px]:w-[calc(25%_-_13.5px)]"
+            className="w-[68%] shrink-0 snap-start min-[760px]:w-[calc(23.5%-14px)]"
           >
             <ProductCard item={item} onAddToCart={onAddToCart} compact />
           </div>
         ))}
-        <div className="w-[calc(50%_-_7px)] shrink-0 snap-start min-[768px]:w-[calc(25%_-_13.5px)]">
+        <div className="w-[68%] shrink-0 snap-start min-[760px]:w-[calc(23.5%-14px)]">
           <div className="flex h-full flex-col justify-between">
             <a
               href="#products"

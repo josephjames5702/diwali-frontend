@@ -8,6 +8,6 @@ export default defineConfig({
     tailwindcss(),
   ],
   preview: {
-    allowedHosts: ['merit-use-ruled-oakland.trycloudflare.com'],
+    allowedHosts: ['.trycloudflare.com'],
   },
 })
